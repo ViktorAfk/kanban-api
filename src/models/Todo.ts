@@ -22,6 +22,11 @@ const TodoSchema = new Schema({
     required: true,
   },
 
+  index: {
+    type: Number,
+    required: true,
+  },
+
   cratedAt: {
     type: Date,
     default: Date.now,
