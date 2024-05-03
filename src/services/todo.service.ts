@@ -1,10 +1,12 @@
 import { TodoModel } from '../models/Todo';
+
 interface Todo {
   title: string;
   body: string;
   status: string;
   boardId: string;
 }
+
 export const getAll = async () => {
   const todos = await TodoModel.find();
   return todos;
@@ -21,11 +23,17 @@ export const createNewTodo = async (todoForCreating: Todo) => {
 };
 
 export const updateTodo = async (todoForUpdate: Todo, todoId: string) => {
-  const updatedTodo = await TodoModel.findByIdAndUpdate(todoId, {
-    $set: {
+  const updatedTodo = await TodoModel.findByIdAndUpdate(
+    todoId,
+    {
       ...todoForUpdate,
     },
-  });
+    { returnDocument: 'after' },
+  );
 
   return updatedTodo;
+};
+
+export const deleteTodo = async (todoId: string) => {
+  await TodoModel.findByIdAndDelete(todoId);
 };
