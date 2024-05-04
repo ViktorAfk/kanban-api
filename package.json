@@ -1,6 +1,6 @@
 {
   "name": "kanban-api",
-  "main": "server.js",
+  "main": "dist/server.js",
   "description": "api",
   "scripts": {
     "start": "node dist/server.js",
