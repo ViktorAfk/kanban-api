@@ -13,7 +13,7 @@ import {
 
 const todoRouter = exress.Router();
 
-todoRouter.get("/", getTodos);
+todoRouter.get("/:boardId", getTodos);
 todoRouter.post("/", checkPostReqBody, addTodo);
 todoRouter.patch("/:id", checkRequestBody, patchTodo);
 todoRouter.delete("/:id", removeTodo);
