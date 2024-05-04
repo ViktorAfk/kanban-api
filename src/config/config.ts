@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
+import path from "path";
 
-const envDot = dotenv.config({ path: __dirname + "/.env" });
+const envDot = dotenv.config({ path: path.resolve(__dirname, ".env") });
 
 const defaultPort = "3001";
 
