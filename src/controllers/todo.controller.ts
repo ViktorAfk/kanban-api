@@ -1,33 +1,30 @@
-import { Controller } from '../typedefs';
-import * as todoService from '../services/todo.service';
-import { Error } from 'mongoose';
+import { Controller } from "../types/typedefs";
+import * as todoService from "../services/todo.service";
+import { Error } from "mongoose";
+import { Todo } from "../types/interface";
 
 export const getTodos: Controller = async (req, res) => {
   const { board, page } = req.query;
+
   try {
     if (!board) {
-      throw new Error('There is no board id');
+      throw new Error("There is no board id");
     }
     const todos = await todoService.getAllFromCurrentBoard(
       board.toString(),
       page?.toString(),
     );
     res.status(200).send(todos);
-  } catch (error: any) {
+  } catch (error) {
     console.error(error);
-    res.status(400).send(error.message)
+    res.status(400).send(error.message);
   }
 };
 
 export const addTodo: Controller = async (req, res) => {
-  const { title, body, status, boardId } = req.body;
+  const todo: Todo = req.body;
 
-  const newTodo = await todoService.createNewTodo({
-    title,
-    body,
-    status,
-    boardId,
-  });
+  const newTodo = await todoService.createNewTodo(todo);
   res.status(201).send(newTodo);
 };
 

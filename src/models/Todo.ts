@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
@@ -40,4 +40,4 @@ const TodoSchema = new Schema({
   },
 });
 
-export const TodoModel = mongoose.model('Todos', TodoSchema);
+export const TodoModel = mongoose.model("Todos", TodoSchema);
