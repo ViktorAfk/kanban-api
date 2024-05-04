@@ -1,17 +1,17 @@
-import { TodoModel } from '../models/Todo';
-import { Todo } from '../types/interface';
-import { calculatePages } from '../utilities/utilities';
+import { TodoModel } from "../models/Todo";
+import { Todo } from "../types/interface";
+import { calculatePages } from "../utilities/utilities";
 
 export const getAllFromCurrentBoard = async (
   boardId: string,
   page?: string,
 ) => {
   const todosPerPage = 9;
-  const currentPage = page || '1';
+  const currentPage = page || "1";
 
   const todos = await TodoModel.find(
     { boardId },
-    'id title body boardId status',
+    "id title body index boardId status",
   )
     .skip(todosPerPage * Number(currentPage) - todosPerPage)
     .limit(todosPerPage)
@@ -48,12 +48,11 @@ export const updateTodo = async (todoForUpdate: Todo, todoId: string) => {
     {
       ...todoForUpdate,
     },
-    { returnDocument: 'after' },
+    { returnDocument: "after" },
   );
 
   return updatedTodo;
 };
-
 
 export const deleteTodo = async (todoId: string) => {
   await TodoModel.findByIdAndDelete(todoId);
