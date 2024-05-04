@@ -1,7 +1,7 @@
 {
   "name": "kanban-api",
   "scripts": {
-    "start": "node build/server.js",
+    "start": "node dist/server.js",
     "dev": "nodemon src/server.ts",
     "format": "prettier src --write",
     "lint": "eslint src --ext ts --max-warnings 0 --fix",
