@@ -19,7 +19,8 @@ export const checkRequestBody = (
   res: Response,
   next: NextFunction,
 ): void => {
-  if (!req.body?.todo) {
+  if (!req.body) {
+    console.log(req.body);
     res.status(400).send("Invalid request body");
   } else {
     next();
