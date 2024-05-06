@@ -6,7 +6,12 @@ import cors from "cors";
 const server = async () => {
   const PORT = 3001;
   const app = express();
-  app.use(cors());
+  const CLIENT_URL = "http://localhost:5173";
+  app.use(
+    cors({
+      origin: [CLIENT_URL],
+    }),
+  );
   app.use("/todos", express.json(), todoRouter);
 
   await connectDB();
