@@ -2,18 +2,15 @@ import express from "express";
 import { connectDB } from "./db";
 import { todoRouter } from "./routes/todo.route";
 import cors from "cors";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 const server = async () => {
   const PORT = 3001;
   const app = express();
   const defalult_Url = "http://localhost:5173";
-  const CLIENT_URL = process.env.CLIENT_URL || defalult_Url;
+  const CLIENT_URL = "https://viktorafk.github.io/kanban-front-end/";
   app.use(
     cors({
-      origin: CLIENT_URL,
+      origin: [CLIENT_URL, defalult_Url],
     }),
   );
   app.use("/todos", express.json(), todoRouter);
