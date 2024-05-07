@@ -7,7 +7,7 @@ const server = async () => {
   const PORT = 3001;
   const app = express();
   const defalult_Url = "http://localhost:5173";
-  const CLIENT_URL = "https://viktorafk.github.io/kanban-front-end/";
+  const CLIENT_URL = "https://viktorafk.github.io";
   app.use(
     cors({
       origin: [CLIENT_URL, defalult_Url],
