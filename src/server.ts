@@ -2,14 +2,18 @@ import express from "express";
 import { connectDB } from "./db";
 import { todoRouter } from "./routes/todo.route";
 import cors from "cors";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const server = async () => {
   const PORT = 3001;
   const app = express();
-  const CLIENT_URL = "http://localhost:5173";
+  const defalult_Url = "http://localhost:5173";
+  const CLIENT_URL = process.env.CLIENT_URL || defalult_Url;
   app.use(
     cors({
-      origin: [CLIENT_URL],
+      origin: CLIENT_URL,
     }),
   );
   app.use("/todos", express.json(), todoRouter);
